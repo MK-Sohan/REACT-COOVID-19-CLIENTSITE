@@ -1,0 +1,72 @@
+/* herosecton-2 start */
+.herosection2-container {
+  position: relative;
+  padding-top: 40%;
+}
+.hero-2 {
+  background-color: rgb(29, 29, 55);
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.right-sideelement {
+  margin-left: 100px;
+  color: white;
+}
+.right-sideelement > h1 {
+  margin-top: 10px;
+}
+.right-sideelement > p {
+  margin-top: 10px;
+  line-height: 20px;
+}
+.tittle {
+  color: #00ff7f;
+}
+.howcorona-main {
+  display: flex;
+  align-items: center;
+
+  margin-top: 20px;
+}
+
+.how-corona {
+  margin-left: 30px;
+}
+.how-corona h3 {
+  font-size: 21px;
+  color: #00ff7f;
+}
+.how-corona p {
+  margin-top: 10px;
+  line-height: 20px;
+}
+.how-coronaimage img {
+  height: 80px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background-color: white;
+}
+@media only screen and (max-width: 644px) {
+  .herosection2-container {
+    position: relative;
+    padding-top: 380px;
+  }
+  .hero-2 {
+    background-color: rgb(29, 29, 55);
+
+    height: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .right-sideelement {
+    margin-left: 10px;
+    color: white;
+  }
+}
+
+/* herosecton-2 end */

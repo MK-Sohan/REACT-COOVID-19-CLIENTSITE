@@ -27,7 +27,21 @@
 .App-link {
   color: #61dafb;
 }
+::-webkit-scrollbar {
+  width: 20px;
+}
 
+::-webkit-scrollbar-track {
+  background: MediumSpringGreen;
+}
+
+::-webkit-scrollbar-thumb {
+  background: MediumSeaGreen;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: SeaGreen;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
