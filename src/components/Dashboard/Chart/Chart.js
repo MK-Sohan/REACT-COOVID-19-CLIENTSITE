@@ -29,13 +29,14 @@ const Chart = () => {
     "/" +
     showdate.getFullYear();
   return (
-    <div className="w-[1430px] bg-gray-300 p-6">
-      <h1 className="text-center text-3xl font-bold">
+    <div className="w-[67vw] text-white  bg-transparent p-6">
+      <h1 className="text-center text-3xl font-bold text-white">
         {" "}
         <span className="text-red-500">COVID-19</span> UPDATE CHART OF{" "}
         <span className="text-cyan-400"> {displaytodaysdate}</span>
       </h1>
       <Line
+        className="text-white"
         data={{
           labels: [
             "January",
@@ -49,8 +50,10 @@ const Chart = () => {
           datasets: [
             {
               label: "New Infected",
+
               data: [12, 34, 56, 102, 676, 98, 46],
               borderColor: "#00ff7f",
+
               backgroundColor: "rgba(255, 99, 132, 0.5)",
             },
             {

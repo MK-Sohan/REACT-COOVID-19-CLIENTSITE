@@ -11,7 +11,11 @@ import { useEffect } from "react";
 import Chart from "./components/Dashboard/Chart/Chart";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import BackTopBtn from "./components/BackTopBtn/BackTopBtn";
-
+import Users from "./components/Dashboard/Users/Users";
+import WorldcovidInfo from "./components/Dashboard/WorldcovidInfo/WorldcovidInfo";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Signup from "./components/Authentication/Login/Signup";
 function App() {
   const location = useLocation();
   useEffect(() => {
@@ -19,18 +23,23 @@ function App() {
     }
   }, [location]);
   return (
-    <div className="overflow-x-hidden overflow-y-hidden">
+    <div className="app ">
       <ScrollToTop></ScrollToTop>
       <Navebar></Navebar>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
+        <Route path="/signup" element={<Signup></Signup>}></Route>
         <Route path="/dashboard" element={<Dashboard></Dashboard>}>
-          <Route index element={<Login></Login>}></Route>
-          <Route path="chart" element={<Chart></Chart>}></Route>
+          <Route index element={<Chart></Chart>}></Route>
+          <Route path="users" element={<Users></Users>}></Route>
+          <Route
+            path="worldcovidinfo"
+            element={<WorldcovidInfo></WorldcovidInfo>}
+          ></Route>
         </Route>
       </Routes>
-
+      <ToastContainer />
       <Footer></Footer>
       <BackTopBtn></BackTopBtn>
     </div>

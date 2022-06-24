@@ -1,4 +1,5 @@
 import React from "react";
+import ContactForm from "../Contact/ContactForm";
 import Heroone from "../Hero/Hero-1/Heroone";
 import Doctors from "./Doctors/Doctors";
 import HowSpread from "./HowSpread/HowSpread";
@@ -13,6 +14,7 @@ const Home = () => {
       <Symtoms></Symtoms>
       <PreventCovid></PreventCovid>
       <Doctors></Doctors>
+      <ContactForm></ContactForm>
     </div>
   );
 };

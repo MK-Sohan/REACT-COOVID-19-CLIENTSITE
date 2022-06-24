@@ -9,7 +9,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
-  /* height: auto; */
+  height: auto;
 
   z-index: 10;
 }
@@ -20,7 +20,7 @@
   align-items: center;
   justify-content: center;
   width: 32%;
-  /* height: auto; */
+  height: auto;
   background: PaleGreen;
   padding: 30px 20px;
   border-radius: 20px;
@@ -212,7 +212,7 @@
 }
 @media only screen and (max-width: 644px) {
   .main-clay {
-    height: 230vh;
+    height: 210vh;
   }
   .featured-clay {
     display: flex;

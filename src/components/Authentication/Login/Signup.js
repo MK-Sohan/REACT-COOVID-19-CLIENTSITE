@@ -1,13 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { BsGoogle } from "react-icons/bs";
-
-const Login = () => {
+import { Link, useNavigate } from "react-router-dom";
+import "./signup.css";
+const Signup = () => {
+  const navigate = useNavigate();
+  const handleRoute = () => {
+    navigate("/login");
+  };
   return (
     <div className="mt-10 bg-slate-900 w-[100%] lg:w-[36%] mx-auto mb-20">
       <div class="flex flex-col  ">
         <form>
-          <h2 className=" text-center text-4xl text-white mb-20">Login here</h2>
+          <h2 className=" text-center text-4xl text-white mb-20">
+            Register here
+          </h2>
 
           <div class="info  lg:h-[300px]  lg:w-full">
             <input
@@ -27,21 +32,21 @@ const Login = () => {
             />
             <p>
               <small className="text-white font-bold text-sm">
-                New Here?{" "}
-                <Link className="text-green-700 font-bold" to="/signup">
-                  Please! Register
+                Already have an Account ?{" "}
+                <Link className="text-green-700 font-bold" to="/login">
+                  Log in
                 </Link>
               </small>
             </p>
             <button className="button-signup" type="submit" href="/">
-              Register
+              Submit
             </button>
           </div>
         </form>
         <div className="divider text-white">OR</div>
         <button
           // onClick={() => signInWithGoogle()}
-          className=" mx-auto mb-10 w-[40%] btn btn-outline text-center   bg-green-500 hover:bg-white text-white hover:border-0"
+          className="transition ease-in-out  mx-auto mb-10 w-[40%] btn btn-outline text-center   bg-green-500 hover:bg-white text-white hover:border-0"
         >
           {/* <BsGoogle></BsGoogle> */}
           <svg
@@ -76,4 +81,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

@@ -42,6 +42,7 @@ html {
 }
 
 .dashboard-river {
+  padding-bottom: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,7 +63,7 @@ html {
   box-shadow: 0 20px 40px 0 SeaGreen, inset 0px -10px 17px 1px MediumSeaGreen;
   overflow: hidden;
   border-radius: 25px;
-  z-index: 9;
+  /* z-index: 9; */
 }
 
 .dashboard {
@@ -115,10 +116,10 @@ html {
   transition: all 0.4s ease-in-out;
 }
 
-.logo-comp > div > svg {
-  fill: white;
-  width: 70%;
-  height: 70%;
+.svgg {
+  fill: black;
+  width: 90%;
+  height: 90%;
   filter: drop-shadow(1px 1px 0px SeaGreen);
   transition: all 0.4s ease-in-out;
 }
@@ -189,7 +190,7 @@ html {
 
 .left-sidebar {
   position: sticky;
-  top: 230px;
+  top: 430px;
   display: flex;
   align-self: flex-start;
   flex-direction: column;
@@ -524,7 +525,7 @@ html {
   }
   .left-sidebar {
     width: 100%;
-    z-index: 9;
+    /* z-index: 9; */
     flex-direction: row;
     border-radius: 0px 0px 20px 20px;
     justify-content: space-evenly;
@@ -737,7 +738,7 @@ html {
     width: 35px;
     height: 35px;
   }
-  .left-sidebar > div > svg {
+  .svgg {
     width: 20px;
   }
   .ui-row-1 {
