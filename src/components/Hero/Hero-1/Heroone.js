@@ -15,12 +15,13 @@ const Heroone = () => {
           >
             <h1 className="text-4xl">
               With <span className="text-red-500 font-bold">COVID-19</span>,
-              we’ve made it to the life raft. <br /> Dry land is far away
+              we’ve made it to the <br /> life raft.Dry land is far away
             </h1>
             <p></p>
             <div className="custom-button">
-              <button className="primary-btn">GET STARTED NOW</button>
-              <button>VIEW COURSE</button>
+              <button className="primary-btn cursor-pointer mycustom-button">
+                GET STARTED NOW
+              </button>
             </div>
           </div>
         </div>

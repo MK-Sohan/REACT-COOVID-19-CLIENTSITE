@@ -1,15 +1,58 @@
-import React from "react";
+import { React, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./signup.css";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import Loading from "../../Loading/Loading";
+
 const Signup = () => {
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+  const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+
+  // const [updateProfile, updating, updateerror] = useUpdateProfile(auth);
   const navigate = useNavigate();
-  const handleRoute = () => {
-    navigate("/login");
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    const name = data.name;
+    const email = data.email;
+    const password = data.password;
+    await createUserWithEmailAndPassword(email, password);
+    // await updateProfile({ displayName: name });
+
+    reset();
   };
+  useEffect(() => {
+    if (user || guser) {
+      navigate("/");
+      toast("Signup Successfully ");
+    }
+  }, [user, guser]);
+
+  let signInError;
+  if (error || gerror) {
+    signInError = (
+      <p className="text-red-600 text-[18px] py-3">{error?.message}</p>
+    );
+  }
+  if (loading || gloading) {
+    return <Loading></Loading>;
+  }
+
   return (
     <div className="mt-10 bg-slate-900 w-[100%] lg:w-[36%] mx-auto mb-20">
       <div class="flex flex-col  ">
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <h2 className=" text-center text-4xl text-white mb-20">
             Register here
           </h2>
@@ -21,15 +64,25 @@ const Signup = () => {
               type="text"
               name="name"
               placeholder="Full name"
+              {...register("name")}
             />
-            <input required type="text" name="name" placeholder="Email" />
+            <input
+              required
+              type="text"
+              name="name"
+              placeholder="Email"
+              {...register("email")}
+            />
 
             <input
               required
               type="password"
               name="name"
               placeholder="Password"
+              className="text-white"
+              {...register("password")}
             />
+            {signInError}
             <p>
               <small className="text-white font-bold text-sm">
                 Already have an Account ?{" "}
@@ -45,8 +98,8 @@ const Signup = () => {
         </form>
         <div className="divider text-white">OR</div>
         <button
-          // onClick={() => signInWithGoogle()}
-          className="transition ease-in-out  mx-auto mb-10 w-[40%] btn btn-outline text-center   bg-green-500 hover:bg-white text-white hover:border-0"
+          onClick={() => signInWithGoogle()}
+          className="transition ease-in-out  mx-auto mb-10 w-[80%] lg:w-[14vw] btn btn-outline text-center border-none  bg-green-500 hover:bg-white text-white hover:border-0"
         >
           {/* <BsGoogle></BsGoogle> */}
           <svg

@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import Tophead from "./Tophead";
-
-import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navebar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { getAuth, signOut } from "firebase/auth";
 
 const Navebar = () => {
   const [click, setClick] = useState(false);
   const [color, setColor] = useState(false);
+  const [user, loading, error] = useAuthState(auth);
+  const logout = () => {
+    signOut(auth);
+  };
   const changeColor = () => {
     if (window.scrollY >= 10) {
       setColor(true);
@@ -15,7 +21,10 @@ const Navebar = () => {
       setColor(false);
     }
   };
-
+  const navigate = useNavigate();
+  const handleRoute = () => {
+    navigate("/login");
+  };
   window.addEventListener("scroll", changeColor);
   return (
     <>
@@ -40,9 +49,7 @@ const Navebar = () => {
             <li>
               <Link to="/dashboard">Dashboard</Link>
             </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
+
             <li>
               <Link to="/signup">Signup</Link>
             </li>
@@ -50,8 +57,23 @@ const Navebar = () => {
               <Link to="/">Contact</Link>
             </li>
           </ul>
+
           <div className="start">
-            <div className="button">BE SAFE</div>
+            {user ? (
+              <button
+                onClick={logout}
+                className="btn btn-sm btn-error text-white bg-red-500 border-none"
+              >
+                Log out
+              </button>
+            ) : (
+              <button
+                onClick={handleRoute}
+                className="btn btn-sm btn-success text-white border-none"
+              >
+                Login
+              </button>
+            )}
           </div>
           <button className="custome-toggle" onClick={() => setClick(!click)}>
             {click ? (

@@ -38,7 +38,7 @@ a {
 li {
   list-style-type: none;
 }
-button {
+.mycustom-button {
   padding: 17px 30px;
   background-color: #fff;
   color: #1eb2a6;

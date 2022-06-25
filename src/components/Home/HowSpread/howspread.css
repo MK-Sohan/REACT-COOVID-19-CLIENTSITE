@@ -3,8 +3,12 @@
   position: relative;
   padding-top: 40%;
 }
+.howspread {
+  padding: 20px 0px;
+}
 .hero-2 {
   background-color: rgb(29, 29, 55);
+  padding: 25px 0px;
   height: 90vh;
   display: flex;
   justify-content: center;
@@ -51,12 +55,12 @@
 @media only screen and (max-width: 644px) {
   .herosection2-container {
     position: relative;
-    padding-top: 380px;
+    padding-top: 330px;
   }
   .hero-2 {
     background-color: rgb(29, 29, 55);
-
-    height: 1200px;
+    padding: 25px 0px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -66,6 +70,9 @@
   .right-sideelement {
     margin-left: 10px;
     color: white;
+  }
+  .howspread {
+    padding-top: 20px;
   }
 }
 

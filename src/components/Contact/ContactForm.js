@@ -74,7 +74,7 @@ const ContactForm = () => {
             data-aos-duration="1000"
             ref={form}
             onSubmit={sendEmail}
-            className="space-y-8  w-full mt-10 lg:ml-28"
+            className="space-y-4 lg:space-y-5  w-full mt-10 lg:ml-28"
           >
             <input
               required
@@ -86,7 +86,7 @@ const ContactForm = () => {
             <input
               required
               name="user_email"
-              className="input w-full bg-gray-500 lg:w-96 lg:ml-10"
+              className="input w-full bg-gray-500 lg:w-96 lg:ml-5"
               type="email "
               placeholder="Your email"
             />
@@ -106,11 +106,7 @@ const ContactForm = () => {
               className="textarea w-full h-40 bg-gray-500  lg:w-[810px] lg:h-56"
               placeholder="Your message"
             ></textarea>
-            <div
-              data-aos="fade-up-left"
-              data-aos-easing="ease-out-cubic"
-              data-aos-duration="1000"
-            >
+            <div>
               <input type="submit" value="Send Message" className="buttonn " />
             </div>
           </form>

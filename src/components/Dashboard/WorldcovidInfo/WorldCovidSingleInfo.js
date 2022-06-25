@@ -17,12 +17,12 @@ const WorldCovidSingleInfo = ({ info, index }) => {
       <tr>
         {/* <th>{index}</th> */}
         <td>{Country}</td>
-        <td>{NewConfirmed}</td>
+        {/* <td>{NewConfirmed}</td>
         <td>{NewDeaths}</td>
-        <td>{NewRecovered}</td>
+        <td>{NewRecovered}</td> */}
         <td>{TotalConfirmed}</td>
         <td>{TotalDeaths}</td>
-        <td>{TotalRecovered}</td>
+        {/* <td>{TotalRecovered}</td> */}
       </tr>
     </>
   );

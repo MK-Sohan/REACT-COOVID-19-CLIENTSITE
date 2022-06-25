@@ -1,30 +1,75 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { React, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { BsGoogle } from "react-icons/bs";
+import Loading from "../../Loading/Loading";
+import { useForm } from "react-hook-form";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+  const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+  const navigate = useNavigate();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    const email = data.email;
+    const password = data.password;
+    signInWithEmailAndPassword(email, password);
+
+    //
+    reset();
+  };
+  if (guser || user) {
+  }
+  useEffect(() => {
+    if (user || guser) {
+      navigate("/");
+      toast("Login Successfull ");
+    }
+  }, [user, guser]);
+  let signInError;
+  if (error || gerror) {
+    signInError = (
+      <p className="text-red-600 text-[18px] py-3">{error?.message}</p>
+    );
+  }
+  if (loading || gloading) {
+    return <Loading></Loading>;
+  }
+
   return (
     <div className="mt-10 bg-slate-900 w-[100%] lg:w-[36%] mx-auto mb-20">
       <div class="flex flex-col  ">
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <h2 className=" text-center text-4xl text-white mb-20">Login here</h2>
 
           <div class="info  lg:h-[300px]  lg:w-full">
             <input
               required
-              class="fname"
               type="text"
               name="name"
-              placeholder="Full name"
+              placeholder="Email"
+              {...register("email")}
             />
-            <input required type="text" name="name" placeholder="Email" />
 
             <input
               required
               type="password"
               name="name"
               placeholder="Password"
+              className="text-white"
+              {...register("password")}
             />
+            {signInError}
             <p>
               <small className="text-white font-bold text-sm">
                 New Here?{" "}
@@ -40,8 +85,8 @@ const Login = () => {
         </form>
         <div className="divider text-white">OR</div>
         <button
-          // onClick={() => signInWithGoogle()}
-          className=" mx-auto mb-10 w-[40%] btn btn-outline text-center   bg-green-500 hover:bg-white text-white hover:border-0"
+          onClick={() => signInWithGoogle()}
+          className=" mx-auto mb-10 w-[80%] lg:w-[14vw] btn btn-outline text-center border-none  bg-green-500 hover:bg-white text-white hover:border-0"
         >
           {/* <BsGoogle></BsGoogle> */}
           <svg

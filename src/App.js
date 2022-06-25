@@ -23,7 +23,7 @@ function App() {
     }
   }, [location]);
   return (
-    <div className="app ">
+    <div className="overflow-x-hidden ">
       <ScrollToTop></ScrollToTop>
       <Navebar></Navebar>
       <Routes>
